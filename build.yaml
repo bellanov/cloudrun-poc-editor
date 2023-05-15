@@ -17,6 +17,6 @@ options:
 
 substitutions:
 
-  _LOCATION: us-central-1
+  _LOCATION: us-central1
   _REPOSITORY: docker-releases
   _IMAGE: poc-editor

@@ -1,0 +1,31 @@
+steps:
+
+  - id: Unit Tests
+    name: golang:1.17-buster
+    entrypoint: sh
+    args:
+    - '-c'
+    - |
+
+        go test
+
+  - id: Build
+    name: gcr.io/cloud-builders/docker
+    entrypoint: sh
+    args:
+    - '-c'
+    - |
+
+        docker build -t ${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${TAG_NAME} .
+
+images:
+  - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${TAG_NAME}'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+
+  _LOCATION: us-central1
+  _REPOSITORY: docker-releases
+  _IMAGE: poc-renderer

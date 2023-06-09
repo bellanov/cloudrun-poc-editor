@@ -1,7 +1,7 @@
 steps:
 
   - id: Unit Tests
-    name: golang:1.17-alpine
+    name: golang:1.17-buster
     entrypoint: sh
     args:
     - '-c'

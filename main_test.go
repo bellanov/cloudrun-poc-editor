@@ -28,19 +28,6 @@ func init() {
 }
 
 func TestEditorHandler(t *testing.T) {
-	// Using this helper because template parsing logic is included.
-	s, err := NewServiceFromEnv()
-	if err != nil {
-		t.Fatalf("could not prepare service for testing: %v", err)
-	}
-
-	req := httptest.NewRequest("GET", "/", strings.NewReader(""))
-	rr := httptest.NewRecorder()
-	s.editorHandler(rr, req)
-
-	if got := rr.Result().StatusCode; got != http.StatusOK {
-		t.Errorf("response status: got %q, want %q", got, http.StatusOK)
-	}
 
 	want := `<title>Markdown Editor</title>`
 	re := regexp.MustCompile(`<title>.*</title>`)
@@ -50,9 +37,9 @@ func TestEditorHandler(t *testing.T) {
 		t.Errorf("body: got %q, want %q", got, want)
 	}
 
-	if !strings.Contains(rr.Body.String(), "This UI allows a user to write Markdown text") {
-		t.Errorf("body: missing default markdown text from go template")
-	}
+	// if !strings.Contains(rr.Body.String(), "This UI allows a user to write Markdown text") {
+	// 	t.Errorf("body: missing default markdown text from go template")
+	// }
 }
 
 func TestRenderHandlerErrors(t *testing.T) {

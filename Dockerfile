@@ -45,5 +45,8 @@ WORKDIR /app
 COPY --from=builder /app/server /app/server
 COPY ./templates /app/templates
 
+# Expose the port the server is listening on.
+EXPOSE 8080
+
 # Run the web service on container startup.
 CMD ["/app/server"]

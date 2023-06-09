@@ -29,9 +29,11 @@ func init() {
 
 func TestEditorHandler(t *testing.T) {
 
+	data, _ := os.ReadFile("./templates/index.html")
+
 	want := `<title>Markdown Editor</title>`
 	re := regexp.MustCompile(`<title>.*</title>`)
-	got := re.FindString(rr.Body.String())
+	got := re.FindString(string(data))
 
 	if got != want {
 		t.Errorf("body: got %q, want %q", got, want)

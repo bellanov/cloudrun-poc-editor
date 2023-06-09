@@ -28,4 +28,4 @@ substitutions:
 
   _LOCATION: us-central1
   _REPOSITORY: docker-releases
-  _IMAGE: poc-renderer
+  _IMAGE: poc-editor

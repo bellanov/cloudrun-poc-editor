@@ -15,11 +15,8 @@
 package main
 
 import (
-	"net/http"
-	"net/http/httptest"
 	"os"
 	"regexp"
-	"strings"
 	"testing"
 )
 
@@ -39,7 +36,4 @@ func TestEditorHandler(t *testing.T) {
 		t.Errorf("body: got %q, want %q", got, want)
 	}
 
-	// if !strings.Contains(rr.Body.String(), "This UI allows a user to write Markdown text") {
-	// 	t.Errorf("body: missing default markdown text from go template")
-	// }
 }

@@ -42,7 +42,7 @@ func TestEditorHandler(t *testing.T) {
 		t.Errorf("response status: got %q, want %q", got, http.StatusOK)
 	}
 
-	want := `<title>Hello Audigent</title>`
+	want := `<title>Interview Time</title>`
 	re := regexp.MustCompile(`<title>.*</title>`)
 	got := re.FindString(rr.Body.String())
 

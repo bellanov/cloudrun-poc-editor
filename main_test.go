@@ -24,7 +24,7 @@ import (
 )
 
 func init() {
-	os.Setenv("EDITOR_UPSTREAM_RENDER_URL", "http://testing.local")
+	os.Setenv("EDITOR_UPSTREAM_RENDER_URL", "http://localhost:3001")
 }
 
 func TestEditorHandler(t *testing.T) {
@@ -42,7 +42,7 @@ func TestEditorHandler(t *testing.T) {
 		t.Errorf("response status: got %q, want %q", got, http.StatusOK)
 	}
 
-	want := `<title>Joe Lurie Was Here</title>`
+	want := `<title>Interview Review</title>`
 	re := regexp.MustCompile(`<title>.*</title>`)
 	got := re.FindString(rr.Body.String())
 
